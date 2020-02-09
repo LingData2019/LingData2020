@@ -24,8 +24,13 @@ hist(x, col="tomato", main="")
 ```
 
 a. What is the proportion of values in the sample that exceed $5$? Explain your answer.
+1/4x + 10x + 4x doesn't exceed $5$ and 4x + 1/4x exceed $5$, so the proportion is 17/4 * 4/57 ~ 0.298
+
 b. Indicate the interval where the median of this sample can lie. Explain your answer.
+The median's interval is from -5 to 0, because most of x lies in this interval.
+
 c. How the histogram will change if we add an element $7$ to the sample? Explain your answer.
+The frequency of the interval 5-10 will increase a little bit, other frequences will remain the same, because there will be 1 more element in the interval 5-10 which means that frequency will increase.
 
 ### Problem 2
 
@@ -43,6 +48,7 @@ hist(sample2, col="lightgreen", xlim=c(100, 900))
 ```
 
 Which of the samples has a larger variance? Explain your answer.
+The first sample has the larger variance, because ~350 - 650 is a larger interval then ~450 - 550.
 
 \newpage
 
@@ -58,6 +64,7 @@ hist(sample2, col="lightgreen", xlim=c(5, 15))
 ```
 
 Which of the samples has a larger variance? Explain your answer.
+The first one, because ~-10 - 15 is a larger interval then 8 - 12.
 
 ## Part 2
 
@@ -76,35 +83,35 @@ hist(mistakes, breaks=60, col= "deepskyblue", ylim=c(0, 40))
 ### 3.1
 Is it true that $50$% students made more than $35$ mistakes?
 ```
-
+NO
 ```
 Explain your answer below:
-
+A part of the figure to the left of 35 mistakes has much more samples then the right part.
 
 ### 3.2
 Is it true that most students made no more than $10$ mistakes?
 ```
-
+NO
 ```
 Explain your answer below:
-
+There are more students that made 10-80 mistakers then 0-10.
 
 ### 3.3
 Which of the following values is closer to be the median of `mistakes`: $10$, $20$, $30$, $40$?
 ```
-
+$10$
 ```
 Explain your answer below:
-
+The hughest frequences seem to be around $10$ mistakes.
 
 ### Problem 4. Exact binomial test
 
 The null hypothesis is that $p=0$ (i.e. no success is possible). In a dataset, there is only one success out of 1 000 000 observations. Will you reject the null hypothesis? 
 ```
-
+YES
 ```
 Explain your answer below:
-
+p-value is 1/1 000 000 which is less then 0.05.
 
 ## Part 3
 
@@ -119,19 +126,19 @@ $44$, $50$, $42$, $64$, $66$, $42$, $72$, $56$, $72$, $54$, $46$, $48$, $48$, $5
 ### 5.1
 Arrange them in a vector and call it `age`. 
 ```{r}
-
+age <- c(44, 50, 42, 64, 66, 42, 72, 56, 72, 54, 46, 48, 48, 52, 50, 66, 84)
 ```
 
 ### 5.2
 Examine the type of `age` variable (numeric, character, etc).
 ```
-
+class(age)
 ```
 
 ### 5.3
 Plot the histogram of the vector `age` with $5$ bins. Change its color to any you want. (Use either R basic or ggplot2 style for plotting.)
 ```{r}
-
+hist(age, col='lightyellow', breaks = 4)
 ```
 
 
@@ -143,13 +150,13 @@ Here is a series of words:
 ### 6.1
 Arrange elements above in a vector and call it `words` 
 ```{r}
-
+words <- c("pie", "bar", "bar", "pie", "pie", "bar", "bar", "chart")
 ```
 
 ### 6.2
 Calculate the relative frequences of values in `words` measured in percent.
 ```{r}
-
+table(words)/length(words)
 ```
 
 ## Problem 7. Position of verbs in verses
@@ -172,41 +179,56 @@ Let's assume that the probability for verbs to be used in any position ('in gene
 
 What is your null hypothesis $H_0$ and what is the alternative hypothesis $H_1$?
 ```
-H0: 
-H1: 
+H0: Probability for the verbs to be used in verses written in 1920s equals the probability for verbs to be used in any position equals 17%.
+H1: Probability for the verbs to be used in verses written in 1920s is not equal to the probability for verbs to be used in any position.
 ```
 
 ### 7.2
 
 Read the dataset [“The last words in verses”](https://raw.githubusercontent.com/LingData2019/LingData2020/master/data/poetry_last_in_lines.csv). Filter out the relevant observations from 1920s, calculate the number of verbs observed in the sample, and the sample size. 
 ```{r}
-
+df <- read.csv("https://raw.githubusercontent.com/LingData2019/LingData2020/master/data/poetry_last_in_lines.csv", sep = "\t")
+year9 <- df[df$Decade=='1920s',]
+total <- nrow(year9) #the sample size
+verbs <- year9[year9$UPoS=="VERB",]
+total_verbs <- nrow(verbs) #the number of verbs observed in the sample
+total_verbs
+total
 ```
 
 ### 7.3
 
 Use an exact binomial test to calculate p-value. 
 ```{r}
-
+binom.test(total_verbs, total, p=0.17)
 ```
 
 ### 7.4 Interpret results
 
 Give your interpretation of obtained p-value. Answer the initial question: Can we decide that in verses written in 1920s, verbs are used in the rhyming posision more often or less often than expected?
 ```
+True probability of success is not equal to 0.17, which means that probability for the verbs to be used in verses written in 1920s is not equal to the probability for verbs to be used in any position. 
 
+In verses written in 1920s, verbs are used in the rhyming posision less often than expected.
 ```
 
 ### 7.5 
 *(A bonus problem, extra points in evaluation)*.
 Repeat 2.3 for verses written in the 1820s.
 ```{r}
+year8 <- df[df$Decade=='1820s',]
+total <- nrow(year8) #the sample size
+verbs <- year8[year8$UPoS=="VERB",]
+total_verbs <- nrow(verbs) #the number of verbs observed in the sample
+total_verbs
+total
 
+binom.test(total_verbs, total, p=0.17)
 ```
 
 Write down your general conlusions about data provided for both 1920s and 1820s data.
 ```
-
+In verses written in 1920s, verbs are used in the rhyming posision less often then in verses written in 1820s.
 ```
 
 ### Problem 8. One-sample t-test
@@ -219,19 +241,22 @@ t.test(sample, mu = 7725) # mu is a population mean
 ### 8.1
 Write down a two-tailed alternative hypothesis.
 ```
-H1: 
+H1: The population mean of vowel duration in speaker `shg05` is either less then 73 or more then 73.
 ```
 
 ### 8.2
 Perform a one-sample t-test. 
 ```{r}
+phono <- read.csv("https://raw.githubusercontent.com/LingData2019/LingData2020/master/data/icelandic.csv")
 
+sample <- phono[phono$speaker=="shg05", "vowel.dur"]
+t.test(sample, mu = 73) 
 ```
 
 ### 8.3
 Interpret results. 
 ```
-
+The population mean of vowel duration in speaker `shg05` equals 70 ms.
 ```
 
 #### Supplementary reading
