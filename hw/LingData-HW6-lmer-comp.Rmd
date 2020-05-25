@@ -115,7 +115,7 @@ Add the regression lines to the scatterplot `2.1` using `fortify` or `augment` m
 ```
 
 ### 2.4
-Interpret the results of the model. (Use `summary()` to get information about your model.) Is _consonansts_ variable still significant? How it changes after we added _area_ random effect? What can you say about lines on the graph? How are they located with respect to each other? Why?
+Interpret the results of the model. (Use `summary()` to get information about your model.) Is the `consonants` variable significant? How it changes after we added the `area` random effect? What can you say about lines on the graph? How are they located with respect to each other? Why?
 
 ```{2.4}
 
@@ -124,7 +124,7 @@ Interpret the results of the model. (Use `summary()` to get information about yo
 
 ## 3. Mixed-effect models with random slopes.
 ### 3.1
-Fit the model `fit3` with random slope that depends on _area_. Your model is given by formula:
+Fit the model `fit3` with random slope that depends on `area`. Your model is given by formula:
 
 $$vowels = \beta_0 + (\beta_1 + u(area))\times consonants.$$
 You can consult [this](http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#model-specification) manual to choose the correct syntax in your `lmer` formula.
@@ -141,9 +141,9 @@ Draw a figure with prediction lines:
 ```
 
 ### 3.3
-Interpret the results. Is _constants_ still significant? Why? What can you say about lines on the graph? How are they located with respect to each other? Why?
+Interpret the results. Is `consonants` significant? Why? What can you say about lines on the graph? How are they located with respect to each other? Why?
 
-```{3.3}
+```{r 3.3}
 
 ```
 
@@ -169,6 +169,6 @@ Draw a figure with predictions:
 ### 4.3
 Interpret the results. Is _constants_ significant? How can we interpret the difference between the prediction lines of these three models?
 
-```{4.3}
+```{r 4.3}
 
 ```
