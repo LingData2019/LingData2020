@@ -1,4 +1,4 @@
-ParticipantID;TypeOfQuestion;QuestionCategory;Responce
+ParticipantID;TypeOfQuestion;QuestionCategory;Answer
 2bc93481d25426f259a0f1a3d5d3e824;Form;age;58
 2bc93481d25426f259a0f1a3d5d3e824;Form;country1;Nicosia
 2bc93481d25426f259a0f1a3d5d3e824;Form;country2;Kaimakli,Nicosia
