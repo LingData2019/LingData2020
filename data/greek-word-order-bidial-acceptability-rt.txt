@@ -1,4 +1,4 @@
-﻿Participant ID;TypeOfQuestion;NoOfQuestion;ResponseAcceptabilityJudgement scale;RT
+﻿Participant ID;TypeOfQuestion;NoOfQuestion;LikertScore;RT
 00e0b159cf5b9abcc73b92506d8b1c38;AcceptabilityJudgement;81;Correct;1591
 00e0b159cf5b9abcc73b92506d8b1c38;AcceptabilityJudgement;82;Correct;5504
 00e0b159cf5b9abcc73b92506d8b1c38;AcceptabilityJudgement;83;Correct;1333
